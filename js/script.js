@@ -75,17 +75,25 @@ const scorePlaceholder = document.getElementById('score');
           // Al click sulla cella salvo il numero interno e la evidenzio 
           cell.addEventListener('click', function(event){
             
+            
             // Controlliamo se la cella è già stata cliccata 
-             if (cell.classList.contains('clicked')) return;
+             if (event.target.classList.contains('clicked')) return;
+
+             if (bombsPosition.includes(parseInt(event.target.innerText))){
+               
+               event.target.classList.add('bomb')
+
+            } else {
+              console.log(i)
+              event.target.classList.add('clicked')
+            
+              score++
+            
+              console.log(score);
+              scorePlaceholder.innerText = `Score:  ${score}`
+            }
     
-            console.log(i)
-            event.target.classList.add('clicked')
-            
-            score++
-            
-           console.log(score);
-           scorePlaceholder.innerText = `Score: ${score}`
-            
+           
           })
             grid.appendChild(cell)
 
