@@ -19,11 +19,12 @@ const scorePlaceholder = document.getElementById('score');
     }
 
 // CREO UNA FUNZIONE che genera un numero casuale compreso tra 1 ed un max 
-    function randomNumber (max) {
-      const randomNumber = Math.floor(Math.random() * max) + 1
-      return randomNumber
+    function getRandomNumber (max) {
+      const randomNumber = Math.floor(Math.random() * max) + 1;
+      return randomNumber;
     }
 
+   
 
     // Al click del bottone genero la griglia di gioco
     playButton.addEventListener('click', function(){
@@ -47,20 +48,30 @@ const scorePlaceholder = document.getElementById('score');
        const bombTotal = 16
        let bombsPosition = [];
 
-       while (bombsPosition.length < bombTotal)
+       while (bombsPosition.length < bombTotal){
+
+       let bombPositionNumber;
        
-       do {
-         const bombPositionNumber = randomNumber(cellTot);
-         bombsPosition.push(bombPositionNumber);
-       } while (bombsPosition.includes(randomNumber))
+        do {
+         
+          bombPositionNumber = getRandomNumber(cellTot);
+          
+          
+        } while (bombsPosition.includes(bombPositionNumber)){
+          
+          bombsPosition.push(bombPositionNumber);
+          console.log(bombsPosition)
 
-       console.log(bombsPosition)
+       }
 
+      }
 
-      // In base alla scelta della difficoltà genero il numero di celle e la loro struttura 
-      let score = 0;
-      let gameOverMessagge = ''
-      
+      //  Creo le costanti per il gameplay
+       let score = 0;
+       let gameOverMessagge = ''
+       const maxScore = 33 
+      //  cellTot - bombTotal
+       // In base alla scelta della difficoltà genero il numero di celle e la loro struttura 
       for (let i = 1; i <= cellTot; i++) {
           const cell = createCell (i)
 
@@ -69,35 +80,40 @@ const scorePlaceholder = document.getElementById('score');
          
 
 
+        
           
           
+           
           
           // Al click sulla cella salvo il numero interno e la evidenzio 
           cell.addEventListener('click', function(event){
             
             
-            // Controlliamo se la cella è già stata cliccata 
+            // Controllose la cella è già stata cliccata 
              if (event.target.classList.contains('clicked')) return;
 
+
+            // Controllo se la casella corrisponde ad una bomba  
              if (bombsPosition.includes(parseInt(event.target.innerText))){
                
                event.target.classList.add('bomb')
-               gameOverMessagge = 'Hai perso'
+               gameOverMessagge = `Hai perso, il tuo score è ${score}`
                
 
             } else {
-              console.log(i)
               event.target.classList.add('clicked')
-            
               score++
-            
-              console.log(score);
               gameOverMessagge = `Score:  ${score}`
             }
-    
-            scorePlaceholder.innerText = gameOverMessagge
-           
+            
+            if(score == maxScore) {
+              gameOverMessagge = `Hai vinto, il tuo score è ${score}`
+            }
+              
+              scorePlaceholder.innerText = gameOverMessagge
           })
+          
+           
             grid.appendChild(cell)
 
             
