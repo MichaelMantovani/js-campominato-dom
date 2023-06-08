@@ -69,8 +69,7 @@ const scorePlaceholder = document.getElementById('score');
       //  Creo le costanti per il gameplay
        let score = 0;
        let gameOverMessagge = ''
-       const maxScore = 33 
-      //  cellTot - bombTotal
+       const maxScore = cellTot - bombTotal
        // In base alla scelta della difficoltà genero il numero di celle e la loro struttura 
       for (let i = 1; i <= cellTot; i++) {
           const cell = createCell (i)
