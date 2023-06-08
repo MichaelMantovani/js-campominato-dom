@@ -4,7 +4,9 @@ console.log('JS OK')
 // Recupero gli elementi dal DOM
 const difficultyInput = document.getElementById('difficulty');
 const playButton = document.getElementById('btn-play');
-const grid = document.getElementById('grid')
+const grid = document.getElementById('grid');
+const scorePlaceholder = document.getElementById('score');
+
 
 
 // CREO UNA FUNZIONE che genera una cella numerata
@@ -36,17 +38,33 @@ const grid = document.getElementById('grid')
       } 
 
       // In base alla scelta della difficoltà genero il numero di celle e la loro struttura 
+      let score = 0;
+      
       for (let i = 1; i <= cellTot; i++) {
           const cell = createCell (i)
 
           cell.classList.add(mode)
-              
+          
+          
+          
           // Al click sulla cella salvo il numero interno e la evidenzio 
-          cell.addEventListener('click', function(){
+          cell.addEventListener('click', function(event){
+            
+            // Controlliamo se la cella è già stata cliccata 
+             if (cell.classList.contains('clicked')) return;
+    
             console.log(i)
-            this.classList.add('clicked')
+            event.target.classList.add('clicked')
+            
+            score++
+            
+           console.log(score);
+           scorePlaceholder.innerText = `Score: ${score}`
+            
           })
             grid.appendChild(cell)
+
+            
         }
       })
       
