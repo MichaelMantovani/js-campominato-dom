@@ -1,0 +1,107 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* GENERALS */
+
+
+/* UTILITY */
+.container{
+  max-width: 992px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+/* HEADER */
+
+
+header{
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+}
+
+#logo{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+#logo img{
+  height: 100%;
+  display: block;
+}
+
+#option{
+  flex-shrink: 1;
+}
+
+
+
+label{
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+select{
+  width: 60px;
+  height: 30px;
+  margin-right: 2rem;
+}
+
+
+
+#btn-play{
+  width: 60px;
+  height: 30px;
+}
+
+
+
+/* MAIN */
+
+main{
+  background-color: lightgreen;
+  height: calc(100vh - 100px);
+}
+
+
+#grid{
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap; 
+  padding: 1.5rem 0;
+}
+
+.cell{
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cell.easy{
+  flex-basis: calc(100% / 10);
+}
+
+.cell.medium{
+  flex-basis: calc(100% / 9);
+}
+
+.cell.hard{
+  flex-basis: calc(100% / 7);
+}
+
+
+.clicked{
+  background-color: lightblue;
+}
+
