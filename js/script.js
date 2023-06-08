@@ -59,7 +59,7 @@ const scorePlaceholder = document.getElementById('score');
 
       // In base alla scelta della difficoltà genero il numero di celle e la loro struttura 
       let score = 0;
-      
+      let gameOverMessagge = ''
       
       for (let i = 1; i <= cellTot; i++) {
           const cell = createCell (i)
@@ -82,7 +82,7 @@ const scorePlaceholder = document.getElementById('score');
              if (bombsPosition.includes(parseInt(event.target.innerText))){
                
                event.target.classList.add('bomb')
-               scorePlaceholder.innerText = 'Hai perso'
+               gameOverMessagge = 'Hai perso'
                
 
             } else {
@@ -92,13 +92,13 @@ const scorePlaceholder = document.getElementById('score');
               score++
             
               console.log(score);
-              scorePlaceholder.innerText = `Score:  ${score}`
+              gameOverMessagge = `Score:  ${score}`
             }
     
+            scorePlaceholder.innerText = gameOverMessagge
            
           })
             grid.appendChild(cell)
-            
 
             
         }
