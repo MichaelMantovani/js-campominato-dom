@@ -82,6 +82,8 @@ const scorePlaceholder = document.getElementById('score');
              if (bombsPosition.includes(parseInt(event.target.innerText))){
                
                event.target.classList.add('bomb')
+               scorePlaceholder.innerText = 'Hai perso'
+               
 
             } else {
               console.log(i)
@@ -96,6 +98,7 @@ const scorePlaceholder = document.getElementById('score');
            
           })
             grid.appendChild(cell)
+            
 
             
         }
