@@ -18,6 +18,12 @@ const scorePlaceholder = document.getElementById('score');
       return cell;
     }
 
+// CREO UNA FUNZIONE che genera un numero casuale compreso tra 1 ed un max 
+    function randomNumber (max) {
+      const randomNumber = Math.floor(Math.random() * max) + 1
+      return randomNumber
+    }
+
 
     // Al click del bottone genero la griglia di gioco
     playButton.addEventListener('click', function(){
@@ -37,13 +43,32 @@ const scorePlaceholder = document.getElementById('score');
         mode = 'hard'
       } 
 
+       // Genero 16 numeri randomici che corrispondono a 16 bombe
+       const bombTotal = 16
+       let bombsPosition = [];
+
+       while (bombsPosition.length < bombTotal)
+       
+       do {
+         const bombPositionNumber = randomNumber(cellTot);
+         bombsPosition.push(bombPositionNumber);
+       } while (bombsPosition.includes(randomNumber))
+
+       console.log(bombsPosition)
+
+
       // In base alla scelta della difficoltà genero il numero di celle e la loro struttura 
       let score = 0;
+      
       
       for (let i = 1; i <= cellTot; i++) {
           const cell = createCell (i)
 
           cell.classList.add(mode)
+        
+         
+
+
           
           
           
